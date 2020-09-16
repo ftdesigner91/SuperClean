@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/logoui_starter_page_bg"
+    tools:context=".StartActivity">
+
+
+    <ImageView
+        android:id="@+id/logoView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:src="@drawable/logoui" />
+
+    <Button
+        android:id="@+id/logBtn"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="450dp"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/button1"
+        android:textColor="@color/colorAccent"
+        android:text="@string/loginBtn" />
+
+    <Button
+        android:id="@+id/regBtn"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/button2"
+        android:layout_below="@+id/logBtn"
+        android:layout_margin="20dp"
+        android:text="@string/regBtn"
+        android:textColor="@color/colorPrimary"/>
+
+</RelativeLayout>

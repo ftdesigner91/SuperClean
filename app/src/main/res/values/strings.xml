@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">SuperClean</string>
+
+    <!--ACTIVITY CHAT MAIN-->
+    <string name="chat_page_main_title">Chat</string>
+
+    <!--ACTIVITY REGISTER-->
+    <string name="rNameHldr">Name</string>
+    <string name="rPasswordHldr">Password</string>
+    <string name="rEmailHldr">Email</string>
+    <string name="rBtnTxt">Register</string>
+
+    <!--ACTIVITY START-->
+    <string name="regBtn">Register</string>
+    <string name="loginBtn">Login</string>
+
+    <!--ACTIVITY ABOUT-->
+    <string name="paragraph">Created by:\nFathi , yakut and kadija</string>
+
+    <!--ACTIVITY LOGIN-->
+    <string name="lEmailHldr">Email</string>
+    <string name="lPassworHldr">Password</string>
+    <string name="lBtnTxt">Login</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>
