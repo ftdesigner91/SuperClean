@@ -172,10 +172,12 @@ public class Register extends AppCompatActivity {
                     userMap.put("phone_number","Enter phone number");
                     userMap.put("image","default");
                     userMap.put("address","Address");
-
-                    nDatabase = FirebaseDatabase.getInstance().getReference().child("users_account").child(uid).child("messages");
+                    /*
+                    nDatabase.child("messages");
                     HashMap<String, String> chatMap = new HashMap<>();
                     chatMap.put("name", name);
+
+                     */
                     //userMap.put("thumb_image","default");
 
                     nDatabase.setValue(userMap).addOnCompleteListener(new OnCompleteListener<Void>() {

@@ -19,6 +19,10 @@ android {
     }
 }
 
+
+apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.google-services' // apply after this line
+apply plugin: 'com.google.firebase.crashlytics'
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'androidx.appcompat:appcompat:1.1.0'
@@ -59,4 +63,6 @@ dependencies {
     implementation 'com.google.firebase:firebase-inappmessaging-display'
     implementation 'com.google.firebase:firebase-messaging'
     implementation 'com.google.firebase:firebase-storage'
+
+    implementation "com.google.firebase:firebase-crash:16.2.1"
 }

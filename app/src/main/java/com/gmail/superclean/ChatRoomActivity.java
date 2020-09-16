@@ -71,7 +71,7 @@ public class ChatRoomActivity extends AppCompatActivity {
     private static final int REQUEST_INVITE = 1;
     private static final int REQUEST_IMAGE = 2;
     private static final String LOADING_IMAGE_URL = "https://www.google.com/images/spin-32.gif";
-    public static final int DEFAULT_MSG_LENGTH_LIMIT = 10;
+    public static final int DEFAULT_MSG_LENGTH_LIMIT = 1000;
     public static final String ANONYMOUS = "anonymous";
     private static final String MESSAGE_SENT_EVENT = "message_sent";
     private String mUsername;
@@ -145,7 +145,7 @@ public class ChatRoomActivity extends AppCompatActivity {
             }
         };
 
-        DatabaseReference messagesRef = mFirebaseDatabaseReference.child(MESSAGES_CHILD);
+        DatabaseReference messagesRef = mFirebaseDatabaseReference.child("users_account").child(MESSAGES_CHILD);
         FirebaseRecyclerOptions<ChatMessage> options =
                 new FirebaseRecyclerOptions.Builder<ChatMessage>()
                         .setQuery(messagesRef, parser)
@@ -282,7 +282,7 @@ public class ChatRoomActivity extends AppCompatActivity {
                         mUsername,
                         mPhotoUrl,
                         null /* no image */);
-                mFirebaseDatabaseReference.child(MESSAGES_CHILD)
+                mFirebaseDatabaseReference.child("users_account").child(MESSAGES_CHILD)
                         .push().setValue(ChatMessage);
                 mMessageEditText.setText("");
                 logMessageSent();
@@ -307,7 +307,23 @@ public class ChatRoomActivity extends AppCompatActivity {
     public void onStart() {
         super.onStart();
         // Check if user is signed in.
-        // TODO: Add code to check if user is signed in.
+        // Check if user is signed in (non-null) and update UI accordingly.
+        FirebaseUser currentUser = mFirebaseAuth.getCurrentUser();
+        //updateUI(currentUser);
+
+        //IF USER IS NOT SIGNED-IN ...
+        if(currentUser == null)
+        {
+            // SEND TO STARTING PAGE METHOD
+            sendToStart();
+        }
+
+    }
+    private void sendToStart()
+    {
+        Intent startIntent = new Intent(ChatRoomActivity.this, StartActivity.class);
+        startActivity(startIntent);
+        finish();
     }
 
     @Override
@@ -362,7 +378,7 @@ public class ChatRoomActivity extends AppCompatActivity {
 
                     ChatMessage tempMessage = new ChatMessage(null, mUsername, mPhotoUrl,
                             LOADING_IMAGE_URL);
-                    mFirebaseDatabaseReference.child(MESSAGES_CHILD).push()
+                    mFirebaseDatabaseReference.child("users_account").child(MESSAGES_CHILD).push()
                             .setValue(tempMessage, new DatabaseReference.CompletionListener() {
                                 @Override
                                 public void onComplete(DatabaseError databaseError,
@@ -400,7 +416,7 @@ public class ChatRoomActivity extends AppCompatActivity {
                                             ChatMessage ChatMessage =
                                                     new ChatMessage(null, mUsername, mPhotoUrl,
                                                             task.getResult().toString());
-                                            mFirebaseDatabaseReference.child(MESSAGES_CHILD).child(key)
+                                            mFirebaseDatabaseReference.child("users_account").child(MESSAGES_CHILD).child(key)
                                                     .setValue(ChatMessage);
                                             logMessageSent();
                                         }
